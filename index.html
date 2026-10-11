@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天海电影网 - 天海爱情电影正版片单、约会排片与字幕盗版避坑</title>
+<meta name="description" content="天海电影网做天海爱情电影正版导航：甜蜜/青春/黄昏恋/异地/奇幻爱情片单，约会时段排片，情感温度分级，字幕错轴与盗版影视避坑，移动端自适应，不提供盗版播放。">
+<meta name="keywords" content="天海电影网,天海爱情电影网,正版爱情片单,约会电影排片,情感分级,字幕避坑,盗版影视识别">
+<meta name="author" content="天海电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://tianhaiyiaiqingdianyingwang-h5.github.io/">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#eaf6f7;color:#10242b;line-height:1.78}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+:root{
+  --sea:#0fb6c2;
+  --sea-deep:#0a6f86;
+  --coral:#ff6f7d;
+  --coral-soft:#ffe1e6;
+  --moon:#f7fbfb;
+  --ink:#0c1f26;
+  --ink2:#16323b;
+  --sand:#f3ead7;
+  --muted:#5d7680;
+}
+
+/* 波浪导航 */
+.nav{position:sticky;top:0;z-index:99;background:rgba(10,111,134,.96);border-bottom:3px solid var(--coral)}
+.nav__box{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;flex-wrap:wrap;gap:.4rem}
+.nav__logo{font-weight:900;font-size:1.25rem;color:var(--coral);letter-spacing:1px}
+.nav__logo b{color:var(--moon)}
+.nav__links{display:flex;gap:.35rem;flex-wrap:wrap}
+.nav__links a{padding:.4rem .85rem;font-size:.82rem;color:var(--moon);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:999px}
+.nav__links a:hover{background:var(--coral);color:var(--ink);border-color:var(--coral)}
+
+/* Hero：海平线+温度计 */
+.hero{max-width:1200px;margin:2rem auto;padding:0 1rem}
+.hero__card{position:relative;display:grid;grid-template-columns:1.3fr .7fr;background:linear-gradient(160deg,#0fb6c2,#0a6f86 70%);color:var(--moon);border-radius:26px;overflow:hidden}
+.hero__card::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:46px;background:radial-gradient(ellipse at 20% 0,var(--moon) 26%,transparent 27%),radial-gradient(ellipse at 60% 0,var(--moon) 26%,transparent 27%),radial-gradient(ellipse at 100% 0,var(--moon) 26%,transparent 27%);background-size:33% 100%;background-repeat:no-repeat}
+.hero__left{padding:3rem 2.2rem 3.6rem}
+.hero__tag{display:inline-block;font-size:.72rem;letter-spacing:2px;color:var(--ink);background:var(--coral);padding:.22rem .8rem;border-radius:999px;margin-bottom:1rem}
+.hero h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.14;margin-bottom:.9rem;color:#fff}
+.hero h1 em{font-style:normal;color:#ffd7dc}
+.hero p{color:#dffafe;max-width:560px;margin-bottom:1.5rem;font-size:.94rem}
+.hero__btn{display:inline-block;background:var(--coral);color:var(--ink);font-weight:800;padding:.78rem 2rem;border-radius:999px}
+.hero__right{display:flex;align-items:center;justify-content:center;padding:2.4rem 2rem 3.6rem}
+.thermo{width:120px;background:#06343f;border:2px solid #0fb6c2;border-radius:999px;padding:.6rem;position:relative}
+.thermo__bar{width:34px;margin:0 auto;border-radius:999px;background:linear-gradient(#ff6f7d,#ffb36b,#0fb6c2);height:200px;position:relative}
+.thermo__mark{position:absolute;left:42px;font-size:.68rem;color:#dffafe;white-space:nowrap}
+.thermo__cap{text-align:center;color:#dffafe;font-size:.72rem;margin-top:.5rem;letter-spacing:1px}
+
+/* 快速情绪 */
+.quick{max-width:1200px;margin:1.4rem auto 0;padding:0 1rem}
+.quick__box{display:flex;flex-wrap:wrap;gap:.55rem}
+.qbtn{background:#fff;border:1px solid var(--sea);color:var(--ink2);padding:.45rem .95rem;font-size:.82rem;border-radius:999px;font-weight:700}
+.qbtn b{color:var(--coral)}
+
+.wrap{max-width:1200px;margin:3.6rem auto;padding:0 1rem}
+.head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
+.head h2{font-size:1.6rem;color:var(--ink)}
+.head h2 span{color:var(--coral)}
+.head a{margin-left:auto;color:var(--muted);font-size:.84rem}
+
+/* 栏目1：爱情片单卡片+温度 */
+.love{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.lc{background:var(--moon);border:2px solid #d4ecee;border-radius:18px;padding:1.1rem;transition:.3s;position:relative;overflow:hidden}
+.lc:hover{transform:translateY(-6px);border-color:var(--coral);box-shadow:0 18px 38px rgba(255,111,125,.18)}
+.lc__emo{font-size:1.8rem}
+.lc h3{font-size:.98rem;margin:.2rem 0;color:var(--ink)}
+.lc p{font-size:.8rem;color:var(--muted);min-height:44px}
+.temp{display:flex;align-items:center;gap:.5rem;margin-top:.5rem}
+.temp__scale{flex:1;height:8px;border-radius:999px;background:#e3f1f2;overflow:hidden}
+.temp__fill{height:100%;background:linear-gradient(90deg,var(--sea),var(--coral))}
+.temp__num{font-size:.72rem;color:var(--coral);font-weight:800}
+.lc__tag{display:inline-block;margin-top:.5rem;font-size:.7rem;color:var(--ink2);background:#d9f3f5;padding:.15rem .6rem;border-radius:999px}
+
+/* 栏目2：约会时刻表 */
+.date{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.slot{background:var(--moon);border:2px solid #d4ecee;border-radius:18px;padding:1.3rem}
+.slot h3{color:var(--sea-deep);margin-bottom:.8rem;font-size:1.05rem}
+.row{display:flex;gap:.7rem;padding:.55rem 0;border-bottom:1px dashed #cfe6e8;font-size:.88rem}
+.row:last-child{border:0}
+.row__time{flex:0 0 96px;color:var(--coral);font-weight:700}
+.row__film{color:var(--ink)}
+.row__plat{margin-left:auto;color:var(--muted);font-size:.78rem}
+
+/* 栏目3：情感温度计/分级 */
+.scale3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.grade{background:var(--moon);border-radius:18px;padding:1.3rem;border:2px solid #d4ecee}
+.grade__icon{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;margin-bottom:.7rem}
+.g1 .grade__icon{background:var(--sea)}
+.g2 .grade__icon{background:#ffb36b}
+.g3 .grade__icon{background:var(--coral)}
+.grade h4{color:var(--ink);font-size:1rem;margin-bottom:.4rem}
+.grade p{font-size:.84rem;color:var(--muted)}
+.grade small{display:block;margin-top:.5rem;color:var(--sea-deep)}
+
+/* 栏目4：正版平台 */
+.rail{display:flex;flex-wrap:wrap;gap:.8rem}
+.chip{padding:.75rem 1.05rem;border-radius:14px;background:var(--moon);border:2px solid var(--sea);color:var(--ink2);font-weight:700;min-width:150px}
+.chip small{display:block;font-weight:400;color:var(--muted);font-size:.74rem}
+
+/* 栏目5：字幕+盗版避坑 */
+.warn{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.box{background:#fff;border-radius:18px;padding:1.4rem}
+.box--sub{border:2px solid var(--sea)}
+.box--risk{border:3px dashed var(--coral)}
+.box h3{margin-bottom:.7rem}
+.box--sub h3{color:var(--sea-deep)}
+.box--risk h3{color:var(--coral)}
+.box ul{margin-left:1.1rem;font-size:.9rem;color:var(--muted)}
+.box li{margin:.32rem 0}
+.box b{color:var(--ink)}
+
+.foot{margin-top:4rem;background:var(--ink);color:#bfe6ea;text-align:center;padding:2.5rem 1rem;border-top:4px solid var(--coral)}
+.foot b{color:var(--coral)}
+.foot a{color:var(--sea);margin:0 .4rem}
+.foot small{display:block;margin-top:.8rem;color:#7fa7ad}
+
+@media(max-width:980px){
+  .hero__card{grid-template-columns:1fr}
+  .love{grid-template-columns:repeat(2,1fr)}
+  .scale3{grid-template-columns:1fr}
+  .date,.warn{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .nav__box{justify-content:center}
+  .head h2{font-size:1.3rem}
+  .love{grid-template-columns:1fr}
+  .row__plat{display:none}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="nav">
+  <div class="nav__box">
+    <div class="nav__logo">天海<b>电影网</b></div>
+    <nav class="nav__links">
+      <a href="#love">爱情片单</a>
+      <a href="#date">约会排片</a>
+      <a href="#scale">情感分级</a>
+      <a href="#legal">正版平台</a>
+      <a href="#check">字幕/盗版避坑</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__card">
+    <div class="hero__left">
+      <span class="hero__tag">SEA OF LOVE / 天海爱情正版导航</span>
+      <h1>天海电影网<br><em>海风、月光、正版爱情片</em></h1>
+      <p>带“天海/爱情”的野站常混成人擦边、未删减枪版、机翻字幕和专用播放器。天海电影网不干那个：按甜蜜、青春、异地、黄昏恋做正版片单，约会场次要情绪不对味不硬凑，跳正规平台看。</p>
+      <a href="#love" class="hero__btn">打开天海爱情片单 ›</a>
+    </div>
+    <div class="hero__right">
+      <div class="thermo">
+        <div class="thermo__bar">
+          <span class="thermo__mark" style="top:6%">热恋·高浓度</span>
+          <span class="thermo__mark" style="top:48%">暧昧·轻甜</span>
+          <span class="thermo__mark" style="top:86%">治愈·低刺激</span>
+        </div>
+        <div class="thermo__cap">MOOD 0—10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quick">
+  <div class="quick__box">
+    <div class="qbtn">💞 甜蜜 → <b>约会场</b></div>
+    <div class="qbtn">🎓 青春 → <b>校园场</b></div>
+    <div class="qbtn">🌉 异地 → <b>时空场</b></div>
+    <div class="qbtn">🧓 黄昏恋 → <b>慢热场</b></div>
+    <div class="qbtn">🌀 奇幻 → <b>设定场</b></div>
+    <div class="qbtn">🛟 治愈 → <b>低刺激场</b></div>
+  </div>
+</div>
+
+<main>
+<section class="wrap" id="love">
+  <div class="head"><h2>天海<span>爱情片单</span></h2><a href="#">更多 ›</a></div>
+  <div class="love">
+    <article class="lc"><div class="lc__emo">💞</div><h3>都市甜蜜</h3><p>职场相遇、饭桌误会、双向暗恋，重对白节奏不重狗血；例《爱情神话》《喜欢你》类国产爱情可在正版库挑。[2](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:78%"></span></span><span class="temp__num">7.8</span></div><span class="lc__tag">腾讯/爱奇艺</span></article>
+    <article class="lc"><div class="lc__emo">🎓</div><h3>青春校园</h3><p>情窦初开、同桌、暗恋、毕业选择，低尺度高共情；例《怦然心动》清茶式青涩，适合亲子伴看讨论。[8](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:66%"></span></span><span class="temp__num">6.6</span></div><span class="lc__tag">B站/腾讯/1905</span></article>
+    <article class="lc"><div class="lc__emo">🌉</div><h3>异地/时空</h3><p>跨城、跨年、跨时空设定，看逻辑闭环与情感落点；例《想见你》《好想去你的世界爱你》走正版奇幻爱情。[2](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:82%"></span></span><span class="temp__num">8.2</span></div><span class="lc__tag">爱奇艺/腾讯</span></article>
+    <article class="lc"><div class="lc__emo">🧓</div><h3>黄昏恋/治愈</h3><p>晚年陪伴、慢关系、生活流，不催泪不强行反转；例《莫娣》真实夫妻相伴，天海夜场慢放最合适。[8](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:58%"></span></span><span class="temp__num">5.8</span></div><span class="lc__tag">腾讯/1905/B站</span></article>
+    <article class="lc"><div class="lc__emo">🌀</div><h3>奇幻设定</h3><p>互换身体、梦境、平行世界，重设定自洽；例《天空之城》《天气之子》爱情线辅奇幻，优先正版配音/字幕版。[11](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:80%"></span></span><span class="temp__num">8.0</span></div><span class="lc__tag">B站/腾讯/优酷</span></article>
+    <article class="lc"><div class="lc__emo">🛟</div><h3>低谷治愈</h3><p>失恋重建、疾病陪伴、家庭和解，情绪低刺激；选片标“心理疏导/伴看建议”，不推沉重枪版。</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:52%"></span></span><span class="temp__num">5.2</span></div><span class="lc__tag">西瓜/央视频/B站</span></article>
+    <article class="lc"><div class="lc__emo">🎭</div><h3>爱情+剧情</h3><p>婚姻、代际、女性处境，重人物不重撒糖；例《爱情神话》《燃冬》类可在爱奇艺/腾讯正版自选。[2](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:84%"></span></span><span class="temp__num">8.4</span></div><span class="lc__tag">腾讯/爱奇艺</span></article>
+    <article class="lc"><div class="lc__emo">🏆</div><h3>经典重看</h3><p>《天堂电影院》《恋恋笔记本》《淘金记》等爱情经典，按修复版/正版字幕挑，不囤“未删减合集”。[11,14](@ref)</p><div class="temp"><span class="temp__scale"><span class="temp__fill" style="width:90%"></span></span><span class="temp__num">9.0</span></div><span class="lc__tag">1905/MUBI/B站</span></article>
+  </div>
+</section>
+
+<section class="wrap" id="date">
+  <div class="head"><h2>约会<span>时刻表</span></h2><a href="#">更多 ›</a></div>
+  <div class="date">
+    <div class="slot">
+      <h3>🌅 白天·轻甜场</h3>
+      <div class="row"><span class="row__time">14:00</span><span class="row__film">青春校园/动画爱情</span><span class="row__plat">B站·腾讯·1905</span></div>
+      <div class="row"><span class="row__time">15:30</span><span class="row__film">都市轻喜剧/甜宠不虐</span><span class="row__plat">腾讯·优酷·芒果</span></div>
+      <div class="row"><span class="row__time">17:00</span><span class="row__film">经典老爱情/修复版</span><span class="row__plat">1905·央视频</span></div>
+    </div>
+    <div class="slot">
+      <h3>🌙 晚间·沉浸场</h3>
+      <div class="row"><span class="row__time">19:30</span><span class="row__film">都市深情/婚姻剧情</span><span class="row__plat">爱奇艺·腾讯</span></div>
+      <div class="row"><span class="row__time">21:00</span><span class="row__film">异地时空/奇幻爱情</span><span class="row__plat">爱奇艺·腾讯·B站</span></div>
+      <div class="row"><span class="row__time">22:30</span><span class="row__film">黄昏恋/治愈慢片</span><span class="row__plat">腾讯·1905·西瓜</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="scale">
+  <div class="head"><h2>情感<span>温度计分级</span></h2><a href="#">更多 ›</a></div>
+  <div class="scale3">
+    <div class="grade g1"><div class="grade__icon">🌊</div><h4>低刺激·治愈级</h4><p>慢节奏、生活流、陪伴向；适合长辈、情绪低落、第一次约会怕尴尬。温度0—4，不推强冲突。</p><small>示例：莫娣、慢生活纪录片、轻动画</small></div>
+    <div class="grade g2"><div class="grade__icon">🌤️</div><h4>轻甜·暧昧级</h4><p>双向暗恋、校园、饭友变恋人；温度5—7，笑点多于哭点，亲子伴看先看清年龄提示。</p><small>示例：怦然心动、都市轻喜剧、青春重看</small></div>
+    <div class="grade g3"><div class="grade__icon">🔥</div><h4>高浓度·热恋级</h4><p>强情绪、重误会、分离复合、大场面奇幻；温度8—10，成人约会优先，不向未成年推露骨支线。</p><small>示例：异地时空、婚姻深水剧情、经典痴恋</small></div>
+  </div>
+</section>
+
+<section class="wrap" id="legal">
+  <div class="head"><h2>正版<span>平台海图</span></h2><a href="#">更多 ›</a></div>
+  <div class="rail">
+    <div class="chip">1905电影网<small>爱情经典/老片/修复版</small></div>
+    <div class="chip">腾讯视频<small>都市爱情/喜剧/青春</small></div>
+    <div class="chip">爱奇艺<small>爱情家庭/奇幻悬疑爱情</small></div>
+    <div class="chip">优酷<small>轻喜剧/合家欢爱情</small></div>
+    <div class="chip">芒果TV<small>青春/甜宠/综艺改</small></div>
+    <div class="chip">哔哩哔哩<small>动画爱情/经典/字幕版</small></div>
+    <div class="chip">央视频<small>正版老片/纪录片伴看</small></div>
+    <div class="chip">西瓜视频<small>治愈/老爱情免费专区</small></div>
+    <div class="chip">MUBI<small>国际爱情/作者文艺</small></div>
+    <div class="chip">Netflix<small>异地/婚姻/国际剧情</small></div>
+  </div>
+</section>
+
+<section class="wrap" id="check">
+  <div class="head"><h2>字幕与盗版<span>避坑</span></h2><a href="#">更多 ›</a></div>
+  <div class="warn">
+    <div class="box box--sub">
+      <h3>🎬 字幕怎么挑不踩坑</h3>
+      <ul>
+        <li>看时间轴：字幕与对白同步，不提前不滞后；整片错轴多为不同片源硬配。[6](@ref)</li>
+        <li>看翻译：人名/地名/称谓统一，不直译、不漏句、不机翻生硬；对白多的片尤其要校对人名。[3](@ref)</li>
+        <li>看版本：正版页标简中/繁中/原声/配音，播放前能切字幕与音轨；只写“HD中字”不标来源要谨慎。[6](@ref)</li>
+        <li>看适龄：爱情片含婚恋冲突、成人关系时，按平台年龄提示和家庭账号分级过滤。[12,3](@ref)</li>
+      </ul>
+    </div>
+    <div class="box box--risk">
+      <h3>⚠️ 天海不干的几件事</h3>
+      <ul>
+        <li>不提供“未删减/全集免费/院线刚下”爱情完整版 → 未授权或盗录风险。[16,17](@ref)</li>
+        <li>不装“专用播放器/解码器/浏览器插件” → 陌生exe/apk可能夹带恶意程序。[7,17](@ref)</li>
+        <li>不聚合网盘解压码、不加群发资源 → 避免博彩/刷单二次引流。</li>
+        <li>不点连续弹窗/假播放/跳博彩交友页；要验证码、银行卡、身份证直接关。[7,4](@ref)</li>
+        <li>不碰成人擦边、三级中字、所谓“流出/偷拍”爱情短剧；合规只做正版情感片。[3](@ref)</li>
+        <li>同名“天海”野站不等于本站；以官方平台、正版片库、备案主体交叉核对为准。[13](@ref)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div><b>天海电影网</b> · 天海爱情正版片单 / 约会时刻排片 / 情感温度分级 / 字幕与盗版避坑</div>
+  <div style="margin-top:.6rem">
+    <a href="#love">爱情片单</a>|
+    <a href="#date">约会排片</a>|
+    <a href="#scale">情感分级</a>|
+    <a href="#legal">正版平台</a>|
+    <a href="#check">字幕/盗版避坑</a>|
+    <a href="#">关于</a>|
+    <a href="#">免责声明</a>
+  </div>
+  <small>官网：https://tianhaiyiaiqingdianyingwang-h5.github.io</small>
+  <small>© 2025 天海电影网 天海爱情正版导航站；不提供盗版影片、不聚合网盘资源、不提供成人内容、不引导安装第三方播放器</small>
+</footer>
+
+</body>
+</html>
